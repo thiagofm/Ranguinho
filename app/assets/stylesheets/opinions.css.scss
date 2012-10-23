@@ -1,0 +1,30 @@
+// Place all the styles related to the Opinions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.opinion-stars {
+  display: inline;
+  float: right;
+  padding-left: 50px;
+}
+
+.opinion-username {
+  display: inline;
+  padding-left: 10px;
+}
+
+.opinion {
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  .icon-star-empty {
+    color: #ddd;
+  }
+}
+
+.btn-to-right{
+  display: inline;
+  float: right;
+
+}

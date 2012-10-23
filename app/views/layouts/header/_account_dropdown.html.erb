@@ -1,0 +1,14 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <%= (image_tag(current_user.profile.profile_image.baby ) + ' ') if !current_user.profile.nil? && current_user.profile.profile_image.present? %><%= current_user.username %>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="nav-header">Profile</li>
+    <li><%= link_to t('site.header.viewprofile'), profile_path(:username => current_user.username)  %></li>
+    <li><%= link_to t('site.header.editprofile'), edit_user_profile_path(:id => current_user.profile.id, :user_id => current_user.id) if current_user.completed? %></li> 
+    <li class="divider"></li>
+    <li><%= link_to t('site.header.settings'), edit_user_registration_path  %></li>
+    <li><%= link_to t('site.header.signout'), destroy_user_session_path, :method => :delete %></li>
+  </ul>
+</li>

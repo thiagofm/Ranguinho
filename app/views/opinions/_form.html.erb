@@ -1,0 +1,22 @@
+<%= form_for [:place, @opinion], :html => { :class => 'form-horizontal' } do |f| %>
+
+  <div class="control-group">
+    <%= f.label :rate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :rate, (0..5).to_a, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :comment, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :comment, :class => 'text_area' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                [:place, @opinion], :class => 'btn' %>
+  </div>
+<% end %>

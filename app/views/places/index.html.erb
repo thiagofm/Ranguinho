@@ -1,0 +1,41 @@
+<% content_for :sidebar do %>
+  <h3>Filters</h3>
+  <ul class="nav nav-list">
+    <li class="nav-header">Distance</li>
+    <%= form_for(places_path, method: 'get', html: { id: :filters } ) do |f| %>
+      <%= f.text_field :maximum_distance, :class => 'distance-slider input-mini', :val => @maximum_distance, :readonly => '' %>
+      <span class="help-inline">miles</span>
+      <%= f.submit nil, style: 'display:none;' %>
+      <div id="slider-distance-min"></div>
+    <% end %>
+  </ul>
+<% end %>
+
+<%- model_class = Place -%>
+
+<%= gmaps4rails(@places_gmaps) %>
+
+<div class="page-header">
+  <h1>Rangos nearby (<%= @maximum_distance %> miles)</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= place.title %></td>
+        <td><%= place.description %></td>
+        <td><%= link_to 'Show', place_path(place), :class => 'btn btn-mini' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_place_path,
+            :class => 'btn btn-primary' %>

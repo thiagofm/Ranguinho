@@ -1,0 +1,5 @@
+<%- model_class = Profile -%>
+<div class="page-header">
+  <h1><%= image_tag(@profile.profile_image.thumb, :class => 'img-polaroid') if @profile.profile_image.present? %> <%= @profile.name %></h1>
+</div>
+<p class="lead">From <%= @profile.state %>, <%= @profile.country %></p>

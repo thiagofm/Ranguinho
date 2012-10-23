@@ -1,0 +1,29 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  site:
+    name: "Rango"
+    header:
+      howitworks: "How it works?"
+      signup: "Sign up"
+      signin: "Sign in"
+      signout: "Sign out"
+      settings: "Settings"
+      editprofile: "Edit profile"
+      viewprofile: "View profile"
+      newplace: "New place"
+      createrango: "Create rango"
+  pages:
+    index:
+      hungry: "Hungry?"
+      cantcook: "Can't cook?"
+      nomoney: "No money?"
+      grubwithyourneighbor: "Grub with your neighbor!"
+
+
+# devise shit that I had to configure it myself
+  devise:
+    devise_registrations:
+      user:
+        signed_up: "Yay, you are in!"

@@ -1,0 +1,8 @@
+<%- model_class = Opinion -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_opinion_path,
+            :class => 'btn btn-primary' %>

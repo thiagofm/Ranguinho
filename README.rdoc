@@ -1,0 +1,12 @@
+= TODO (b4 teh end)
+
+- Settings title should be Settings, not Edit User
+- New Profile h1 should be with a better message
+- Fix tabindex new profile
+
+== TODO (in the future...)
+
+- Limit amount of places a user can create
+- Move locationservice to another directory && applicationcontroller
+- Remove profile when user is deleted
+- Refactor _account_dropdown

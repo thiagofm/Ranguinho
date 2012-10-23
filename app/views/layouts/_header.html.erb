@@ -1,0 +1,23 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to t('site.name'), root_path, :class => 'brand' %>
+      <div class="container nav-collapse">
+        <ul class="nav">
+          <!-- Nav for both signed in or not -->
+          <li><%= link_to t('site.header.howitworks'), pages_howitworks_path %></li>
+          <% if user_signed_in? %>
+            <!-- Nav when signed in -->
+            <li><%= link_to t('site.header.explore'), places_path %></li>
+            <%= render :partial => 'layouts/header/places_dropdown' %>
+            <%= render :partial => 'layouts/header/account_dropdown' %>
+         <% else %>
+            <!-- Nav when signed out -->
+            <li><%= link_to t('site.header.signup'), new_user_registration_path  %></li>
+            <li><%= link_to t('site.header.signin'), new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
