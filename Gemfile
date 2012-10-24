@@ -50,6 +50,15 @@ group :assets do
 end
 
 group :development do
+  gem 'foreman'
+
+  # livereload
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'rack-livereload'
+  gem 'listen', '0.4.7' # http://stackoverflow.com/questions/12250261/cant-get-rb-fsevent-gem-working-on-osx
+  gem 'rb-fsevent'
+
   gem 'rails-footnotes'
 end
 
