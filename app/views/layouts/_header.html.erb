@@ -1,9 +1,14 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
       <%= link_to t('site.name'), root_path, :class => 'brand' %>
       <div class="container nav-collapse">
-        <ul class="nav">
+        <ul class="nav pull-right">
           <!-- Nav for both signed in or not -->
           <li><%= link_to t('site.header.howitworks'), pages_howitworks_path %></li>
           <% if user_signed_in? %>
@@ -11,7 +16,7 @@
             <li><%= link_to t('site.header.explore'), places_path %></li>
             <%= render :partial => 'layouts/header/places_dropdown' %>
             <%= render :partial => 'layouts/header/account_dropdown' %>
-         <% else %>
+          <% else %>
             <!-- Nav when signed out -->
             <li><%= link_to t('site.header.signup'), new_user_registration_path  %></li>
             <li><%= link_to t('site.header.signin'), new_user_session_path %></li>
@@ -21,3 +26,4 @@
     </div>
   </div>
 </div>
+
