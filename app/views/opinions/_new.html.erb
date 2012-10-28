@@ -1,0 +1,26 @@
+<div class="modal hide fade" id="newOpinion">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Review <%= @place.title %></h3>
+  </div>
+  <%= form_for [@place, @opinion], :html => { :class => 'form-horizontal' } do |f| %>
+    <div class="modal-body">
+      <div class="control-group">
+        <%= f.label :rate, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.select :rate, (0..5).to_a, :class => 'number_field' %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :comment, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :comment %>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit nil, :class => 'btn btn-primary', :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

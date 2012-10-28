@@ -25,6 +25,7 @@ class PlacesController < ApplicationController
 	def show
 		@place = Place.find(params[:id])
 		@opinions = @place.opinions
+    @opinion = Opinion.new
 	end
 
 	def create
@@ -44,5 +45,4 @@ class PlacesController < ApplicationController
       render :new
     end
 	end
-
 end

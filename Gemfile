@@ -17,6 +17,7 @@ gem 'twitter-bootstrap-rails'
 
 # random gems
 gem 'nokogiri'
+gem 'nested_form'
 
 # geocoding
 gem 'gmaps4rails'

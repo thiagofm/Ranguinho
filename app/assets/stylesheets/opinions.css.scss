@@ -3,9 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .opinion-stars {
-  display: inline;
-  float: right;
-  padding-left: 50px;
+  margin: 10px;
 }
 
 .opinion-username {
@@ -23,8 +21,16 @@
   }
 }
 
-.btn-to-right{
+.btn-to-right {
   display: inline;
   float: right;
 
+}
+
+.opinion-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  h4 {
+    margin: 5px 0 0 0;
+  }
 }

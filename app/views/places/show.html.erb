@@ -3,38 +3,53 @@
   <h1><%= image_tag(@place.place_image.thumb, :class => 'img-polaroid') if @place.place_image.present? %> <%= @place.title %></h1>
 </div>
 
-<p class="lead"><%= @place.description %></p>
-
-<br /><br />
-
-<%- model_class = Opinion -%>
-<div class="page-header">
-  <div><h4>What do people say about <%= @place.title %>?</h4></div>
-  <div class="btn-to-right">
-    <%= link_to 'Review', new_place_opinion_path(:place_id => @place.id), :class => 'btn btn-primary' %>
+<div class="row">
+  <div class="span9">
+    <p class="lead"><%= @place.description %></p>
   </div>
 </div>
+
+<div class="opinion-header row">
+  <div class="span7">
+    <h4>What do people say about <%= @place.title %>?</h4>
+  </div>
+  <div class="span2">
+    <div class="pull-right">
+      <button id="review-place" data-toggle='modal' data-target='#newOpinion' class="btn btn-primary">
+        Review
+      </button>
+    </div>
+  </div>
+</div>
+
+<%= render :partial => 'opinions/new' %>
 
 <div class="opinion">
   <% @opinions.each do |opinion| %>    
     <div class="accordion" id="accordion2">
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<%= opinion.id %>" href="#collapse<%= opinion.id %>">
-            <%= image_tag opinion.user.profile.profile_image.baby, :class => 'img-circle' %>
-            <div class="opinion-username">
-              <%= opinion.user.profile.name %>
+          <div class="row">
+            <div class="span5">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<%= opinion.id %>" href="#collapse<%= opinion.id %>">
+                <%= image_tag opinion.user.profile.profile_image.baby, :class => 'img-circle' %>
+                <div class="opinion-username">
+                  <%= opinion.user.profile.name %>
+                </div>
+              </a>
             </div>
-            <div class="opinion-stars">
-              Rate: 
-              <% opinion.rate.times do %>
-                <i class="icon-star"></i>
-              <% end %>
-              <% (5 - opinion.rate).times do %>
-                <i class="icon-star-empty"></i>
-              <% end %>
+            <div class="span3">
+              <div class="opinion-stars pull-right">
+                Rate: 
+                <% opinion.rate.times do %>
+                  <i class="icon-star"></i>
+                <% end %>
+                <% (5 - opinion.rate).times do %>
+                  <i class="icon-star-empty"></i>
+                <% end %>
+              </div>
             </div>
-          </a>
+          </div>
         </div>
         <div id="collapse<%= opinion.id %>" class="accordion-body collapse in">
           <div class="accordion-inner">

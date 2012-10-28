@@ -15,3 +15,7 @@ $ ->
       $('#filters').submit()
 
   $("#_places_maximum_distance").val $("#slider-distance-min").slider("value")
+
+  $('#review-place').popover
+    delay: { show: 200, hide: 200 }
+    placement: 'bottom'

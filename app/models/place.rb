@@ -21,17 +21,7 @@ class StateValidator < ActiveModel::Validator
 end
 
 class Place < ActiveRecord::Base
-  # Friendly Id Gem - Generates slug for this model
-  include FriendlyId
-  friendly_id :title, use: [:slugged]
-
-  # Geocoder
-  reverse_geocoded_by :latitude, :longitude
-
-  # Carrierwave uploader
-  mount_uploader :place_image, PlaceImageUploader
-
-  attr_accessible :description, :title, :street, :city, :state, :country, :place_image, :place_image_cache
+  attr_accessible :description, :title, :street, :city, :state, :country, :place_image, :place_image_cache, :opinions_attributes
 
   # Relations
   belongs_to :user
@@ -59,6 +49,19 @@ class Place < ActiveRecord::Base
 
   # Gmaps4rails
   acts_as_gmappable
+
+  # nested_form
+  accepts_nested_attributes_for :opinions
+
+  # Friendly Id Gem - Generates slug for this model
+  include FriendlyId
+  friendly_id :title, use: [:slugged]
+
+  # Geocoder
+  reverse_geocoded_by :latitude, :longitude
+
+  # Carrierwave uploader
+  mount_uploader :place_image, PlaceImageUploader
 
   def gmaps4rails_address
     "#{self.street}, #{self.city}, #{self.state}, #{self.country}" 

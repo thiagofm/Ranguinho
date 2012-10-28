@@ -45,7 +45,6 @@ module Ranguinho
     # Twitter bootstrap form styling
     ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
       html = %(<div class="field_with_errors">#{html_tag}</div>).html_safe
-      # add nokogiri gem to Gemfile
       
       form_fields = [
         'textarea',
@@ -53,13 +52,15 @@ module Ranguinho
         'select'
       ]
 
-      elements = Nokogiri::HTML::DocumentFragment.parse(html_tag).css "label, " + form_fields.join(', ')
-      
+      elements = Nokogiri::HTML::DocumentFragment.parse(html_tag).css("label, " + form_fields.join(', '))
+
       elements.each do |e|
         if e.node_name.eql? 'label'
-          html = %(<div class="control-group error">#{e}</div>).html_safe
+          # wrap erroneous label
+          html = %(<span class='field_with_errors'>#{e}</span>).html_safe
         elsif form_fields.include? e.node_name
-          html = %(<div class="control-group error">#{html_tag}<span class="help-inline">&nbsp;#{instance.error_message[0]}.</span></div>).html_safe
+          # wrap erroneous field
+          html = %(<span class='field_with_errors'>#{e}<span class="help-inline">&nbsp;#{instance.error_message.first}</span></span>).html_safe
         end
       end
       html
