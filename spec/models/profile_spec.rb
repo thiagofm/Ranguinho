@@ -20,7 +20,7 @@ describe Profile do
 
     context '#name' do
       it "should have one" do
-        FactoryGirl.create(:nameless_profile, user: user, name: '').should be_valid
+        lambda { FactoryGirl.create(:profile, user: user, name: '') }.should raise_error
       end
     end
   end

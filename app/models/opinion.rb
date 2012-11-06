@@ -7,4 +7,10 @@ class Opinion < ActiveRecord::Base
 
   validates :place_id,
             :presence => true
+
+  validates :user_id,
+            :presence => true
+
+  validates :rate,
+            :presence => true
 end
