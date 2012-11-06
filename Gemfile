@@ -37,6 +37,21 @@ gem 'countries'
 # https://github.com/norman/friendly_id
 gem 'friendly_id'
 
+# TDD
+group :development, :test do
+  gem 'simplecov', :require => false
+  gem "rspec-rails", "~> 2.6"
+  gem 'capybara'
+  gem 'autotest'
+  gem 'autotest-growl'
+  gem 'autotest-rails'
+  gem 'spork-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner' # used with spork
+  gem 'quiet_assets'
+  gem 'faker'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

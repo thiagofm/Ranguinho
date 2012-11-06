@@ -33,6 +33,9 @@ class Profile < ActiveRecord::Base
   belongs_to :user
 
    # Validations
+  validates :name,
+            :presence => true
+
   validates :country,
             :presence => true
 
