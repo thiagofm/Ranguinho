@@ -18,6 +18,6 @@
 /coverage
 
 # Ignore uploaded files
-/public/upload
+/public/upload/**
 
 .DS_Store
