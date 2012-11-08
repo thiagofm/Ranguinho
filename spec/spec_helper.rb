@@ -15,6 +15,9 @@ RSpec.configure do |config|
   # Loading lib directory
   config.pattern = "**/*_spec.rb"
 
+  # Devise
+  config.include Devise::TestHelpers, :type => :controller
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
