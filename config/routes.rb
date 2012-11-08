@@ -12,7 +12,7 @@ Ranguinho::Application.routes.draw do
   get 'services/states/:alpha2' => 'LocationService#states', :as => :states_from_country_service
 
   resources :users do
-    resources :profiles
+    resources :profiles, :except => [:index]
   end
 
   resources :places do

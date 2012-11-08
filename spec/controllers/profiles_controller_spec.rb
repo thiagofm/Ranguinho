@@ -4,16 +4,11 @@ describe ProfilesController do
   let(:user) { FactoryGirl.create :user, completed: true }
   let(:profile) { FactoryGirl.create(:profile, user: user) }
 
-  context '#index' do
-    it 'should show 404' do
-      pending
-    end
-  end
-
   context '#show' do
     it 'should show the requested user profile' do
+      profile
       get :show, username: user.username
-      response.status.should == 200
+      assigns(:profile).should == profile
     end
   end
 
