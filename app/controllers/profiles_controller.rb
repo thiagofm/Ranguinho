@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   skip_filter :require_completed_profile, :only => [:new]
   before_filter :require_ownership_of_profile, :only => [:edit]
   before_filter :authenticate_user!, :except => [:show]
+  before_filter :no_profile_user, :only => [:new, :create]
 
 	def edit
 		@profile = current_user.profile
@@ -25,13 +26,7 @@ class ProfilesController < ApplicationController
 	end
 
 	def new
-    if current_user.profile.present?
-      flash[:alert] = "You already have a profile."
-
-      redirect_to places_path
-    else
-      @profile = Profile.new
-    end
+    @profile = Profile.new
 	end
 
   def create
@@ -58,6 +53,16 @@ class ProfilesController < ApplicationController
     if params[:id] != current_user.profile.id.to_s || params[:user_id] != current_user.id.to_s
       flash[:alert] = "You shouldn't be here."
       redirect_to edit_user_profile_path(:user_id => current_user.id, :id => current_user.profile.id)
+    end
+  end
+
+  def no_profile_user
+    if current_user.profile.present?
+      flash[:alert] = "You already have a profile."
+
+      redirect_to places_path
+    else
+      @profile = Profile.new
     end
   end
 end
