@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   skip_filter :require_completed_profile, :only => [:new]
   before_filter :require_ownership_of_profile, :only => [:edit]
+  before_filter :authenticate_user!, :except => [:show]
 
 	def edit
 		@profile = current_user.profile
@@ -24,7 +25,13 @@ class ProfilesController < ApplicationController
 	end
 
 	def new
-		@profile = Profile.new
+    if current_user.profile.present?
+      flash[:alert] = "You already have a profile."
+
+      redirect_to places_path
+    else
+      @profile = Profile.new
+    end
 	end
 
   def create
@@ -34,9 +41,10 @@ class ProfilesController < ApplicationController
     if @profile.save
       # update completed
       @profile.user.update_attribute(:completed, true)
-      redirect_to places_path
 
       flash[:success] = "Your profile is complete. Enjoy your stay!"
+
+      redirect_to places_path
     else
       # flash if address is inexistant in gmaps
       flash[:alert] = @profile.errors.messages[:gmaps4rails_address].first if @profile.errors.messages.key? :gmaps4rails_address

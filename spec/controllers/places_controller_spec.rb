@@ -32,11 +32,11 @@ describe PlacesController do
         end
 
         it 'finds places close to it' do
-          pending
+          pending 'refactor'
         end
 
         it 'sets up markers for gmaps' do
-          pending
+          pending 'refactor'
         end
       end
     end
